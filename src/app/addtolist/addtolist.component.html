@@ -1,0 +1,6 @@
+<form (submit)="addTodos()">
+  <input type="text" >
+  </form>
+<ul>
+<li *ngFor="let todo of todos">{{todo.text}}</li>
+</ul>
