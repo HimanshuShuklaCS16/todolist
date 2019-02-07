@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {TodoService} from '../todo.service';
 @Component({
   selector: 'app-addtolist',
   templateUrl: './addtolist.component.html',
@@ -7,13 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddtolistComponent implements OnInit {
 todos;
-Text;
-  constructor() { }
+text1;
+  constructor(private todoservice:TodoService) { }
 
   ngOnInit() {
-    this.todos=[{text:"himanshu1"},{text:"himanshu2"},{text:"himanshu3"}];
+    this.todos=this.todoservice.getTodos();
   }
 addTodos(){
-  console.log(this.Text);
+  var newtodo={text:this.text1}
+  this.todos.push(newtodo);
+  this.todoservice.addtodo(newtodo);
+}
+deletetodo(todotext){
+  for(let i=0;i<this.todos.length;i++)
+  {
+    if(this.todos[i].text===todotext)
+    {
+      this.todos.splice(i,1);
+    }
+  }
 }
 }
