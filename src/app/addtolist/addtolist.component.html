@@ -1,6 +1,29 @@
-<form (submit)="addTodos()">
-  <input type="text" [(ngModel)]="text1" name="text1">
+<div *ngIf="appState=='edit'">
+<h3>Update todo</h3>
+<form (submit)="updateTodos()" >
+  <div class="form-group">
+  <input type="text" [(ngModel)]="text1" name="text1" class="form-control">
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+  </div>
   </form>
-<ul>
-<li *ngFor="let todo of todos">{{todo.text}} <button (click)="deletetodo(todo.text)">x</button></li>
+  </div>
+<div *ngIf="appState=='default'">
+<h3>Add tasks</h3>
+<form (submit)="addTodos()" class="form-group">
+  <div class="form-group">
+  <input type="text" [(ngModel)]="text1" name="text1" class="form-control">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </form>
+  </div>
+<ul class="list-group">
+  <h2>List of Tasks</h2>
+<li *ngFor="let todo of todos" class="list-group-item">
+<span >{{todo.text}}</span>
+<br>
+<button (click)="editTodo(todo)" class="btn btn-success">Update</button>
+<button (click)="deletetodo(todo.text)" class="btn btn-danger">Delete</button>
+</li>
 </ul>

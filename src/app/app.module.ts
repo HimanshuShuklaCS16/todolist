@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AddtolistComponent } from './addtolist/addtolist.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddtolistComponent
+    AddtolistComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,FormsModule

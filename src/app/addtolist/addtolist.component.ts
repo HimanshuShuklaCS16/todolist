@@ -8,6 +8,8 @@ import {TodoService} from '../todo.service';
 export class AddtolistComponent implements OnInit {
 todos;
 text1;
+oldtext;
+appState="default";
   constructor(private todoservice:TodoService) { }
 
   ngOnInit() {
@@ -26,5 +28,24 @@ deletetodo(todotext){
       this.todos.splice(i,1);
     }
   }
+  this.todoservice.deletetodo(todotext);
+}
+editTodo(todo)
+{
+  this.appState="edit";
+  this.oldtext=todo.text;
+  this.text1=todo.text;
+}
+updateTodos()
+{
+  for(let i=0;i<this.todos.length;i++)
+  {
+    if(this.todos[i].text===this.oldtext)
+    {
+      this.todos[i].text=this.text1;
+    }
+  }
+    this.todoservice.updatetodo(this.oldtext,this.text1);
+    this.appState="default";
 }
 }

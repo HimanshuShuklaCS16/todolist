@@ -20,4 +20,26 @@ this.load();
     todos.push(todo);
     localStorage.setItem('todos',JSON.stringify(todos));
   }
+  deletetodo(todo){
+    var todos=JSON.parse(localStorage.getItem('todos'));
+    for(let i=0;i<todos.length;i++)
+    {
+      if(todos[i].text===todo)
+      {
+        todos.splice(i,1);
+      }
+    }
+    localStorage.setItem('todos',JSON.stringify(todos));
+  }
+  updatetodo(oldtext,newtext){
+    var todos=JSON.parse(localStorage.getItem('todos'));
+    for(let i=0;i<todos.length;i++)
+    {
+      if(todos[i].text===oldtext)
+      {
+        todos[i].text=newtext;
+      }
+    }
+    localStorage.setItem('todos',JSON.stringify(todos));
+  }
 }
